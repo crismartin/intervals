@@ -20,11 +20,11 @@ public class Interval {
 	}
 
 	public boolean hasIntersectionMaxWithMinB(Interval intervalB){
-		return  this.max.isWithin(intervalB.min.value);
+		return this.max.isWithin(intervalB.min.value);
 	}
 
 	public boolean contains(Interval intervalB){
-		return false;
+		return hasIntersection(intervalB) && hasIntersectionMaxWithMinB(intervalB);
 	}
 
 	@Override

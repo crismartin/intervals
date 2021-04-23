@@ -53,4 +53,5 @@ public class IntersectionTest {
         Interval intervalB = new IntervalBuilder().closed(4).closed(6).build();
         assertTrue(intervalA.contains(intervalB));
     }
+
 }
