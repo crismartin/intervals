@@ -10,6 +10,6 @@ public class Intersection {
     }
 
     public boolean exist(){
-        return true;
+        return this.intervalA.min.isWithin(this.intervalB.max.value);
     }
 }

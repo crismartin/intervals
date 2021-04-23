@@ -2,8 +2,8 @@ package usantatecla;
 
 public class Interval {
 
-	private Min min;
-	private Max max;
+	Min min;
+	Max max;
 
 	public Interval(Min min, Max max) {
 		assert min.value <= max.value;
