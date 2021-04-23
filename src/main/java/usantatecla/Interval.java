@@ -20,7 +20,7 @@ public class Interval {
 	}
 
 	public boolean hasIntersectionMaxWithMinB(Interval intervalB){
-		return  this.max.value >= intervalB.min.value;
+		return  this.max.isWithin(intervalB.min.value);
 	}
 
 	@Override
