@@ -10,6 +10,6 @@ public class Intersection {
     }
 
     public boolean exist(){
-        return false;
+        return true;
     }
 }
