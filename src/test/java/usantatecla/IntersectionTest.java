@@ -20,7 +20,7 @@ public class IntersectionTest {
     }
 
     @Test
-    public void givenTwoIntervalsClosedWhenNonePointOfIntervalBInsideInIntervalAThenTrue(){
+    public void givenTwoIntervalsClosedWhenMaxPointOfIntervalBLessThanMinPointIntervalAThenTrue(){
         Interval intervalA = new IntervalBuilder().closed(0).closed(10).build();
         Interval intervalB = new IntervalBuilder().closed(-5).closed(-1).build();
         assertFalse(intervalA.hasIntersection(intervalB));
@@ -38,6 +38,13 @@ public class IntersectionTest {
         Interval intervalA = new IntervalBuilder().closed(0).closed(10).build();
         Interval intervalB = new IntervalBuilder().closed(9).closed(13).build();
         assertTrue(intervalA.hasIntersectionMaxWithMinB(intervalB));
+    }
+
+    @Test
+    public void givenTwoIntervalsClosedWhenMinPointOfIntervalBGreatherThanMaxPointIntervalAThenTrue(){
+        Interval intervalA = new IntervalBuilder().closed(0).closed(10).build();
+        Interval intervalB = new IntervalBuilder().closed(11).closed(13).build();
+        assertFalse(intervalA.hasIntersectionMaxWithMinB(intervalB));
     }
 
 }
