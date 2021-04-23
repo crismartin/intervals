@@ -2,8 +2,8 @@ package usantatecla;
 
 public class Interval {
 
-	Min min;
-	Max max;
+	private Min min;
+	private Max max;
 
 	public Interval(Min min, Max max) {
 		assert min.value <= max.value;
@@ -13,6 +13,10 @@ public class Interval {
 
 	public boolean include(double value) {
 			return this.min.isWithin(value) && this.max.isWithin(value);
+	}
+
+	public boolean hasIntersection(Interval intervalB){
+		return this.min.isWithin(intervalB.max.value);
 	}
 
 	@Override
