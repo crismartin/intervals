@@ -47,4 +47,10 @@ public class IntersectionTest {
         assertFalse(intervalA.hasIntersectionMaxWithMinB(intervalB));
     }
 
+    @Test
+    public void givenTwoIntervalsClosedWhenIntervalAContainsIntervalBThenTrue(){
+        Interval intervalA = new IntervalBuilder().closed(0).closed(10).build();
+        Interval intervalB = new IntervalBuilder().closed(4).closed(6).build();
+        assertTrue(intervalA.contains(intervalB));
+    }
 }

@@ -23,6 +23,10 @@ public class Interval {
 		return  this.max.isWithin(intervalB.min.value);
 	}
 
+	public boolean contains(Interval intervalB){
+		return false;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
