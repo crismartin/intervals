@@ -16,10 +16,10 @@ public class Interval {
 	}
 
 	public boolean hasIntersectionMinWithMaxB(Interval intervalB){
-		if(intervalB.min.isClose()) {
-			return this.min.isWithin(intervalB.max.value);
-		}else {
+		if( !intervalB.min.isClose() || !intervalB.max.isClose()  ) {
 			return this.min.isWithin(intervalB.max.value) && this.min.isWithin(intervalB.max.value - 0.1);
+		}else {
+			return this.min.isWithin(intervalB.max.value);
 		}
 	}
 

@@ -12,8 +12,11 @@ public class ClosedMax extends Max {
   }
 
   @Override
-	public String toString() {
+  public String toString() {
 		return this.value + "]";
-	}	
+  }
 
+  public boolean isClose() {
+      return true;
+  }
 }

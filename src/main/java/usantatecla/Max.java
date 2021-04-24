@@ -12,6 +12,10 @@ public class Max {
     return this.value > value;
   }
 
+  public boolean isClose() {
+    return false;
+  }
+
   @Override
   public int hashCode() {
     final int prime = 31;
