@@ -139,4 +139,19 @@ public class IntersectionTest {
 
     }
 
+    @Test
+    public void givenTwoIntervalsClosedOpenWhenIntervalAContainsIntervalBThenTrue() {
+        minIntervalB = new Point(-0.1);
+        maxIntervalB = new Point(10.1);
+        Interval intervalA = new IntervalBuilder().closed(this.intervalA[min].getEquals()).closed(this.intervalA[max].getEquals()).build();
+        Interval intervalB = new IntervalBuilder().open(minIntervalB.getEquals()).open(maxIntervalB.getEquals()).build();
+        assertTrue(intervalA.hasIntersection(intervalB));
+
+        intervalB = new IntervalBuilder().open(minIntervalB.getGreater()).open(maxIntervalB.getLess()).build();
+        assertTrue(intervalA.hasIntersection(intervalB));
+
+        intervalB = new IntervalBuilder().open(minIntervalB.getLess()).open(maxIntervalB.getGreater()).build();
+        assertTrue(intervalA.hasIntersection(intervalB));
+    }
+
 }
