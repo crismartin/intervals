@@ -60,27 +60,25 @@ public class IntersectionTest {
 
     @Test
     public void givenTwoIntervalsClosedWhenIntervalAContainsIntervalBThenTrue(){
-        Interval intervalA = new IntervalBuilder().closed(0).closed(10).build();
-        Interval intervalB = new IntervalBuilder().closed(4).closed(6).build();
+        minIntervalB = new Point(4);
+        maxIntervalB = new Point(6);
+        Interval intervalA = new IntervalBuilder().closed(this.intervalA[min].getEquals()).closed(this.intervalA[max].getEquals()).build();
+        Interval intervalB = new IntervalBuilder().closed(minIntervalB.getEquals()).closed(maxIntervalB.getEquals()).build();
         assertTrue(intervalA.hasIntersection(intervalB));
     }
 
     @Test
-    public void givenTwoIntervalsOpenWhenMaxPointOfIntervalBEqualsMinPointIntervalAThenFalse(){
-        Interval intervalA = new IntervalBuilder().open(0).open(10).build();
-        Interval intervalB = new IntervalBuilder().open(-5).open(0).build();
+    public void givenTwoIntervalsOpenWhenCompareMaxPointOfIntervalBWithMinPointIntervalA(){
+        minIntervalB = new Point(-5);
+        maxIntervalB = new Point(0);
+        Interval intervalA = new IntervalBuilder().open(this.intervalA[min].getEquals()).open(this.intervalA[max].getEquals()).build();
+        Interval intervalB = new IntervalBuilder().open(minIntervalB.getEquals()).open(maxIntervalB.getEquals()).build();
         assertFalse(intervalA.hasIntersection(intervalB));
-    }
-    @Test
-    public void givenTwoIntervalsOpenWhenMaxPointOfIntervalBGreatherThanMinPointIntervalAThenTrue(){
-        Interval intervalA = new IntervalBuilder().open(0).open(10).build();
-        Interval intervalB = new IntervalBuilder().open(-5).open(0.1).build();
+
+        intervalB = new IntervalBuilder().open(minIntervalB.getEquals()).open(maxIntervalB.getGreater()).build();
         assertTrue(intervalA.hasIntersection(intervalB));
-    }
-    @Test
-    public void givenTwoIntervalsOpenWhenMaxPointOfIntervalBLessThanMinPointIntervalAThenFalse(){
-        Interval intervalA = new IntervalBuilder().open(0).open(10).build();
-        Interval intervalB = new IntervalBuilder().open(-5).open(-0.1).build();
+
+        intervalB = new IntervalBuilder().open(minIntervalB.getEquals()).open(maxIntervalB.getLess()).build();
         assertFalse(intervalA.hasIntersection(intervalB));
     }
 
