@@ -11,6 +11,9 @@ public class Min {
 	public boolean isWithin(double value) {
       return this.value < value;
   }
+  public boolean isClose() {
+    return false;
+  }
 
   @Override
   public int hashCode() {

@@ -74,7 +74,7 @@ public class IntersectionTest {
         assertFalse(intervalA.hasIntersection(intervalB));
 
         intervalB = new IntervalBuilder().open(minIntervalB.getEquals()).open(maxIntervalB.getGreater()).build();
-        assertTrue(intervalA.hasIntersection(intervalB));
+        assertFalse(intervalA.hasIntersection(intervalB));
 
         intervalB = new IntervalBuilder().open(minIntervalB.getEquals()).open(maxIntervalB.getLess()).build();
         assertFalse(intervalA.hasIntersection(intervalB));
