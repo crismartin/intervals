@@ -15,6 +15,10 @@ public class Min {
     return false;
   }
 
+  public boolean isOpen() {
+    return !isClose();
+  }
+
   @Override
   public int hashCode() {
     final int prime = 31;

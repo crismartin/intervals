@@ -163,6 +163,7 @@ public class IntersectionTest {
         assertTrue(intervalA.hasIntersection(intervalB));
     }
 
+
     @Test
     public void givenIntervalAClosedClosedAndIntervalBOpenClosedWhenCompareMaxPointOfIntervalBWithMinPointIntervalA() {
         minIntervalB = new Point(-5);

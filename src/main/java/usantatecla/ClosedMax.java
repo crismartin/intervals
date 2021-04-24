@@ -19,4 +19,5 @@ public class ClosedMax extends Max {
   public boolean isClose() {
       return true;
   }
+
 }
