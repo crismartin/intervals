@@ -27,10 +27,14 @@ public class Interval {
 	}
 
 	public boolean hasIntersectionMaxWithMinB(Interval intervalB){
-		if(intervalB.min.isClose()){
+		if(this.max.isClose() && intervalB.min.isClose()){
 			return this.max.isWithin(intervalB.min.value);
+
+		}else if(this.max.isClose() && intervalB.min.isOpen() || this.max.isOpen() && intervalB.min.isClose()) {
+			return this.max.isWithin(intervalB.min.value + 0.1) || this.max.value == intervalB.min.value + 0.1;
 		}
-		return this.max.isWithin(intervalB.min.value) && this.max.isWithin(intervalB.min.value + 0.1);
+
+		return this.max.isWithin(intervalB.min.value + 0.2) || this.max.value == intervalB.min.value+0.2;
 	}
 
 	public boolean hasIntersection(Interval intervalB){
