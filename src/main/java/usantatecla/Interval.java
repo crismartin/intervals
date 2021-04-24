@@ -24,7 +24,10 @@ public class Interval {
 	}
 
 	public boolean hasIntersectionMaxWithMinB(Interval intervalB){
-		return this.max.isWithin(intervalB.min.value);
+		if(intervalB.min.isClose()){
+			return this.max.isWithin(intervalB.min.value);
+		}
+		return this.max.isWithin(intervalB.min.value) && this.max.isWithin(intervalB.min.value + 0.1);
 	}
 
 	public boolean hasIntersection(Interval intervalB){
