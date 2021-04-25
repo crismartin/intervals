@@ -20,6 +20,7 @@ public class Max {
     return !isClose();
   }
 
+
   @Override
   public int hashCode() {
     final int prime = 31;

@@ -15,30 +15,13 @@ public class Interval {
 			return this.min.isWithin(value) && this.max.isWithin(value);
 	}
 
-	public boolean hasIntersectionMinWithMaxB(Interval intervalB){
-		if(this.min.isClose() && intervalB.max.isClose()){
-			return this.min.isWithin(intervalB.max.value);
-
-		}else if(this.min.isClose() && intervalB.max.isOpen() || this.min.isOpen() && intervalB.max.isClose()) {
-			return this.min.isWithin(intervalB.max.value - 0.1) || this.min.value == intervalB.max.value-0.1;
-		}
-
-		return this.min.isWithin(intervalB.max.value-0.2) || this.min.value == intervalB.max.value-0.2;
-	}
-
-	public boolean hasIntersectionMaxWithMinB(Interval intervalB){
-		if(this.max.isClose() && intervalB.min.isClose()){
-			return this.max.isWithin(intervalB.min.value);
-
-		}else if(this.max.isClose() && intervalB.min.isOpen() || this.max.isOpen() && intervalB.min.isClose()) {
-			return this.max.isWithin(intervalB.min.value + 0.1) || this.max.value == intervalB.min.value + 0.1;
-		}
-
-		return this.max.isWithin(intervalB.min.value + 0.2) || this.max.value == intervalB.min.value+0.2;
-	}
-
 	public boolean hasIntersection(Interval intervalB){
-		return (hasIntersectionMinWithMaxB(intervalB) && hasIntersectionMaxWithMinB(intervalB));
+		double minA = (this.min.isOpen()) ? this.min.value + 0.1 : this.min.value;
+		double maxA = (this.max.isOpen()) ? this.max.value - 0.1 : this.max.value;
+		double minB = (intervalB.min.isOpen()) ? intervalB.min.value + 0.1 : intervalB.min.value;
+		double maxB = (intervalB.max.isOpen()) ? intervalB.max.value - 0.1 : intervalB.max.value;
+
+		return Math.max(minA, minB) <= Math.min(maxA, maxB);
 	}
 
 	@Override
