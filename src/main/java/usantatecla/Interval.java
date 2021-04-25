@@ -16,12 +16,7 @@ public class Interval {
 	}
 
 	public boolean hasIntersection(Interval intervalB){
-		double minA = (this.min.isOpen()) ? this.min.value + 0.1 : this.min.value;
-		double maxA = (this.max.isOpen()) ? this.max.value - 0.1 : this.max.value;
-		double minB = (intervalB.min.isOpen()) ? intervalB.min.value + 0.1 : intervalB.min.value;
-		double maxB = (intervalB.max.isOpen()) ? intervalB.max.value - 0.1 : intervalB.max.value;
-
-		return Math.max(minA, minB) <= Math.min(maxA, maxB);
+		return Math.max(min.normalization(), intervalB.min.normalization()) <= Math.min(max.normalization(), intervalB.max.normalization());
 	}
 
 	@Override

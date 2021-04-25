@@ -19,6 +19,10 @@ public class Min {
     return !isClose();
   }
 
+  public double normalization(){
+    return isOpen() ? this.value + 0.1 : this.value;
+  }
+
   @Override
   public int hashCode() {
     final int prime = 31;
