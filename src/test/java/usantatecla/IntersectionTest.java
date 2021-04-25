@@ -8,10 +8,7 @@ import org.junit.jupiter.api.Test;
 
 public class IntersectionTest {
 
-    private Point[] intervalA;
-    private Point[] intervalB;
-    private IntervalBuilder intervalBuilderA;
-    private IntervalBuilder intervalBuilderB;
+    private Point[] pointsA;
 
     private static final int max = 1;
     private static final int min = 0;
@@ -21,8 +18,7 @@ public class IntersectionTest {
 
     @BeforeEach
     public void before() {
-        this.intervalA = new Point[]{new Point(0), new Point(10)};
-        this.intervalB = new Point[]{new Point(0), new Point(10)};
+        this.pointsA = new Point[]{new Point(0), new Point(10)};
     }
 
     @Test
@@ -30,7 +26,7 @@ public class IntersectionTest {
         minIntervalB = new Point(-5);
         maxIntervalB = new Point(0.2);
 
-        Interval intervalA = new IntervalBuilder().open(this.intervalA[min].getEquals()).open(this.intervalA[max].getEquals()).build();
+        Interval intervalA = new IntervalBuilder().open(this.pointsA[min].getEquals()).open(this.pointsA[max].getEquals()).build();
         Interval intervalB = new IntervalBuilder().open(minIntervalB.getEquals()).open(maxIntervalB.getEquals()).build();
         assertTrue(intervalA.hasIntersection(intervalB));
 
@@ -46,7 +42,7 @@ public class IntersectionTest {
         minIntervalB = new Point(9.8);
         maxIntervalB = new Point(15);
 
-        Interval intervalA = new IntervalBuilder().open(this.intervalA[min].getEquals()).open(this.intervalA[max].getEquals()).build();
+        Interval intervalA = new IntervalBuilder().open(this.pointsA[min].getEquals()).open(this.pointsA[max].getEquals()).build();
         Interval intervalB = new IntervalBuilder().open(minIntervalB.getEquals()).open(maxIntervalB.getEquals()).build();
         assertTrue(intervalA.hasIntersection(intervalB));
 
@@ -61,7 +57,7 @@ public class IntersectionTest {
     public void givenTwoIntervalsOpenWhenIntervalAContainsIntervalBThenTrue() {
         minIntervalB = new Point(0);
         maxIntervalB = new Point(10);
-        Interval intervalA = new IntervalBuilder().open(this.intervalA[min].getEquals()).open(this.intervalA[max].getEquals()).build();
+        Interval intervalA = new IntervalBuilder().open(this.pointsA[min].getEquals()).open(this.pointsA[max].getEquals()).build();
         Interval intervalB = new IntervalBuilder().open(minIntervalB.getEquals()).open(maxIntervalB.getEquals()).build();
         assertTrue(intervalA.hasIntersection(intervalB));
     }
@@ -71,7 +67,7 @@ public class IntersectionTest {
         minIntervalB = new Point(-5);
         maxIntervalB = new Point(0.1);
 
-        Interval intervalA = new IntervalBuilder().open(this.intervalA[min].getEquals()).closed(this.intervalA[max].getEquals()).build();
+        Interval intervalA = new IntervalBuilder().open(this.pointsA[min].getEquals()).closed(this.pointsA[max].getEquals()).build();
         Interval intervalB = new IntervalBuilder().closed(minIntervalB.getEquals()).closed(maxIntervalB.getEquals()).build();
         assertTrue(intervalA.hasIntersection(intervalB));
 
@@ -87,7 +83,7 @@ public class IntersectionTest {
         minIntervalB = new Point(10);
         maxIntervalB = new Point(15);
 
-        Interval intervalA = new IntervalBuilder().open(this.intervalA[min].getEquals()).closed(this.intervalA[max].getEquals()).build();
+        Interval intervalA = new IntervalBuilder().open(this.pointsA[min].getEquals()).closed(this.pointsA[max].getEquals()).build();
         Interval intervalB = new IntervalBuilder().closed(minIntervalB.getEquals()).closed(maxIntervalB.getEquals()).build();
         assertTrue(intervalA.hasIntersection(intervalB));
 
@@ -103,7 +99,7 @@ public class IntersectionTest {
         minIntervalB = new Point(0.1);
         maxIntervalB = new Point(10);
 
-        Interval intervalA = new IntervalBuilder().open(this.intervalA[min].getEquals()).closed(this.intervalA[max].getEquals()).build();
+        Interval intervalA = new IntervalBuilder().open(this.pointsA[min].getEquals()).closed(this.pointsA[max].getEquals()).build();
         Interval intervalB = new IntervalBuilder().closed(minIntervalB.getEquals()).closed(maxIntervalB.getEquals()).build();
         assertTrue(intervalA.hasIntersection(intervalB));
 
@@ -120,7 +116,7 @@ public class IntersectionTest {
         minIntervalB = new Point(-5);
         maxIntervalB = new Point(0.1);
 
-        Interval intervalA = new IntervalBuilder().closed(this.intervalA[min].getEquals()).open(this.intervalA[max].getEquals()).build();
+        Interval intervalA = new IntervalBuilder().closed(this.pointsA[min].getEquals()).open(this.pointsA[max].getEquals()).build();
         Interval intervalB = new IntervalBuilder().closed(minIntervalB.getEquals()).open(maxIntervalB.getEquals()).build();
         assertTrue(intervalA.hasIntersection(intervalB));
 
@@ -136,7 +132,7 @@ public class IntersectionTest {
         minIntervalB = new Point(9.9);
         maxIntervalB = new Point(15);
 
-        Interval intervalA = new IntervalBuilder().closed(this.intervalA[min].getEquals()).open(this.intervalA[max].getEquals()).build();
+        Interval intervalA = new IntervalBuilder().closed(this.pointsA[min].getEquals()).open(this.pointsA[max].getEquals()).build();
         Interval intervalB = new IntervalBuilder().closed(minIntervalB.getEquals()).open(maxIntervalB.getEquals()).build();
         assertTrue(intervalA.hasIntersection(intervalB));
 
@@ -152,7 +148,7 @@ public class IntersectionTest {
         minIntervalB = new Point(0);
         maxIntervalB = new Point(10);
 
-        Interval intervalA = new IntervalBuilder().closed(this.intervalA[min].getEquals()).open(this.intervalA[max].getEquals()).build();
+        Interval intervalA = new IntervalBuilder().closed(this.pointsA[min].getEquals()).open(this.pointsA[max].getEquals()).build();
         Interval intervalB = new IntervalBuilder().closed(minIntervalB.getEquals()).open(maxIntervalB.getEquals()).build();
         assertTrue(intervalA.hasIntersection(intervalB));
 
@@ -169,7 +165,7 @@ public class IntersectionTest {
         minIntervalB = new Point(-5);
         maxIntervalB = new Point(0);
 
-        Interval intervalA = new IntervalBuilder().closed(this.intervalA[min].getEquals()).closed(this.intervalA[max].getEquals()).build();
+        Interval intervalA = new IntervalBuilder().closed(this.pointsA[min].getEquals()).closed(this.pointsA[max].getEquals()).build();
         Interval intervalB = new IntervalBuilder().open(minIntervalB.getEquals()).closed(maxIntervalB.getEquals()).build();
         assertTrue(intervalA.hasIntersection(intervalB));
 
@@ -185,7 +181,7 @@ public class IntersectionTest {
         minIntervalB = new Point(10);
         maxIntervalB = new Point(15);
 
-        Interval intervalA = new IntervalBuilder().closed(this.intervalA[min].getEquals()).closed(this.intervalA[max].getEquals()).build();
+        Interval intervalA = new IntervalBuilder().closed(this.pointsA[min].getEquals()).closed(this.pointsA[max].getEquals()).build();
         Interval intervalB = new IntervalBuilder().open(minIntervalB.getEquals()).closed(maxIntervalB.getEquals()).build();
         assertFalse(intervalA.hasIntersection(intervalB));
 
@@ -201,7 +197,7 @@ public class IntersectionTest {
         minIntervalB = new Point(-0.1);
         maxIntervalB = new Point(10.1);
 
-        Interval intervalA = new IntervalBuilder().closed(this.intervalA[min].getEquals()).closed(this.intervalA[max].getEquals()).build();
+        Interval intervalA = new IntervalBuilder().closed(this.pointsA[min].getEquals()).closed(this.pointsA[max].getEquals()).build();
         Interval intervalB = new IntervalBuilder().open(minIntervalB.getEquals()).closed(maxIntervalB.getEquals()).build();
         assertTrue(intervalA.hasIntersection(intervalB));
 
@@ -219,7 +215,7 @@ public class IntersectionTest {
         minIntervalB = new Point(-5);
         maxIntervalB = new Point(0.1);
 
-        Interval intervalA = new IntervalBuilder().open(this.intervalA[min].getEquals()).open(this.intervalA[max].getEquals()).build();
+        Interval intervalA = new IntervalBuilder().open(this.pointsA[min].getEquals()).open(this.pointsA[max].getEquals()).build();
         Interval intervalB = new IntervalBuilder().open(minIntervalB.getEquals()).closed(maxIntervalB.getEquals()).build();
         assertTrue(intervalA.hasIntersection(intervalB));
 
@@ -235,7 +231,7 @@ public class IntersectionTest {
         minIntervalB = new Point(9.8);
         maxIntervalB = new Point(15);
 
-        Interval intervalA = new IntervalBuilder().open(this.intervalA[min].getEquals()).open(this.intervalA[max].getEquals()).build();
+        Interval intervalA = new IntervalBuilder().open(this.pointsA[min].getEquals()).open(this.pointsA[max].getEquals()).build();
         Interval intervalB = new IntervalBuilder().open(minIntervalB.getEquals()).closed(maxIntervalB.getEquals()).build();
         assertTrue(intervalA.hasIntersection(intervalB));
 
@@ -251,7 +247,7 @@ public class IntersectionTest {
         minIntervalB = new Point(0);
         maxIntervalB = new Point(9.9);
 
-        Interval intervalA = new IntervalBuilder().open(this.intervalA[min].getEquals()).open(this.intervalA[max].getEquals()).build();
+        Interval intervalA = new IntervalBuilder().open(this.pointsA[min].getEquals()).open(this.pointsA[max].getEquals()).build();
         Interval intervalB = new IntervalBuilder().open(minIntervalB.getEquals()).closed(maxIntervalB.getEquals()).build();
         assertTrue(intervalA.hasIntersection(intervalB));
 
